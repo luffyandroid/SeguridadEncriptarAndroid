@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private String encriptar(String datos, String password) throws Exception{
         SecretKeySpec secretKey = generateKey(password);
         Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.DECRYPT_MODE, secretKey);
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
         byte[] datosEncriptadosBytes = cipher.doFinal(datos.getBytes());
         String datosEncriptadosString = Base64.encodeToString(datosEncriptadosBytes, Base64.DEFAULT);
         return datosEncriptadosString;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             tvTexto.setText(textoSalida);
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
 
     }
